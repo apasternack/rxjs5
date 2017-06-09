@@ -1,4 +1,7 @@
-import { Observable, Observer } from "rxjs";
+// import { Observable, Observer } from "rxjs";
+
+import { Observable } from "rxjs/Observable";
+
 
 let numbers = [1, 5, 10];
 let source = Observable.create(observer => {
