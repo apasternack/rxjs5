@@ -1,8 +1,8 @@
-// import { Observable, Observer } from "rxjs";
+import { Observable, Observer } from "rxjs";
 
-import { Observable } from "rxjs/Observable";
-import "rxjs/add/operator/map";  //this file has side effects which add .map to Observable
-import "rxjs/add/operator/filter";
+// import { Observable } from "rxjs/Observable";
+// import "rxjs/add/operator/map";  //this file has side effects which add .map to Observable
+// import "rxjs/add/operator/filter";
 
 let numbers = [1, 5, 10];
 let source = Observable.create(observer => {
