@@ -28,7 +28,19 @@ function load(url: string) {
 
         xhr.open("GET", url);
         xhr.send();
-    });
+    }).retryWhen(retryStrategy());
+}
+
+function retryStrategy() {
+    return function(errors) {  //this returned function must take an observable and return one per the .retryWhen API
+        return errors
+                .scan((acc, value) => {
+                    console.log(acc, value);
+                    return acc + 1;
+                }, 0)
+                .takeWhile(acc => acc < 4)
+                .delay(1000);
+    }
 }
 
 function renderMovies(movies) {
