@@ -4,7 +4,7 @@ import { Observable, Observer } from "rxjs";
 // import "rxjs/add/operator/map";  //this file has side effects which add .map to Observable
 // import "rxjs/add/operator/filter";
 
-let numbers = [1, 5, 10];
+let circle = document.getElementById("circle");
 let source = Observable.fromEvent(document, "mousemove")
                         .map((e : MouseEvent) => {
                             return {
@@ -17,8 +17,13 @@ let source = Observable.fromEvent(document, "mousemove")
     // .map(n => n * 2)
     // .filter(n => n > 4);
 
+function onNext(value) {
+    circle.style.left = value.x;
+    circle.style.top = value.y;
+}
+
 source.subscribe(
-    value => console.log(value),
+    onNext,
     e => console.log(`error: ${e}`),
     () => console.log("complete")
 );
