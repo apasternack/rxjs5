@@ -36,10 +36,8 @@ function renderMovies(movies) {
 }
 
 click.flatMap(e => load("movies.json"))
-    .subscribe(o => console.log(o));
-
-// click.subscribe(
-//     e => load("movies.json"),  //in RXJS world this step becomes the creating of an observable
-//     e => console.log(`error: ${e}`),
-//     () => console.log("complete")
-// );
+    .subscribe(
+        renderMovies,
+        e => console.log(`error: ${e}`),
+        () => console.log("complete")
+    );
