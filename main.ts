@@ -6,6 +6,12 @@ import { Observable, Observer } from "rxjs";
 
 let numbers = [1, 5, 10];
 let source = Observable.fromEvent(document, "mousemove")
+                        .map((e : MouseEvent) => {
+                            return {
+                                x: e.clientX,
+                                y: e.clientY
+                            }
+                        })
 
     // .map(n => n * 2)
     // .filter(n => n > 4);
