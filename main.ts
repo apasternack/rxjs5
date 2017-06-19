@@ -12,7 +12,8 @@ let source = Observable.fromEvent(document, "mousemove")
                                 y: e.clientY
                             }
                         })
-                        .filter(value => value.x < 500);
+                        .filter(value => value.x < 500)
+                        .delay(300);
 
     // .map(n => n * 2)
     // .filter(n => n > 4);
