@@ -35,7 +35,7 @@ function renderMovies(movies) {
     });
 }
 
-click.map(e => load("movies.json"))
+click.flatMap(e => load("movies.json"))
     .subscribe(o => console.log(o));
 
 // click.subscribe(
