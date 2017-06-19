@@ -17,9 +17,13 @@ function load(url: string) {
         let xhr = new XMLHttpRequest();
 
         xhr.addEventListener("load", () => {
-            let data = JSON.parse(xhr.responseText);
-            observer.next(data);
-            observer.complete();
+            if (xhr.status === 200) {
+                let data = JSON.parse(xhr.responseText);
+                observer.next(data);
+                observer.complete();
+            } else {
+                observer.error(xhr.statusText);
+            }
         });
 
         xhr.open("GET", url);
@@ -35,9 +39,9 @@ function renderMovies(movies) {
     });
 }
 
-load("movies.json").subscribe(renderMovies);
+// load("movies.json").subscribe(renderMovies);
 
-click.flatMap(e => load("movies.json"))
+click.flatMap(e => load("moviess.json"))
     .subscribe(
         renderMovies,
         e => console.log(`error: ${e}`),
